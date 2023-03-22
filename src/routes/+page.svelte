@@ -1,7 +1,11 @@
 <script>
 	import Counter from './Counter.svelte';
-	import welcome from '$lib/images/svelte-welcome.webp';
-	import welcome_fallback from '$lib/images/svelte-welcome.png';
+
+	
+	const promise = (async () => {
+		const response = await fetch('/api/visitlog');
+		return await response.json();
+	})();
 </script>
 
 <svelte:head>
@@ -9,21 +13,22 @@
 	<meta name="description" content="Svelte demo app" />
 </svelte:head>
 
+{#await promise}
+<p>
+	Loading visit logs...
+</p>
+{:then visitlogs}
+{#each visitlogs as log }
+<div>
+	{log}
+</div> 
+{/each}
+{/await}
+
 <section>
 	<h1>
-		<span class="welcome">
-			<picture>
-				<source srcset={welcome} type="image/webp" />
-				<img src={welcome_fallback} alt="Welcome" />
-			</picture>
-		</span>
-
-		to your new<br />SvelteKit app
+		Welcome to your new<br />RisingStar app !!!
 	</h1>
-
-	<h2>
-		try editing <strong>src/routes/+page.svelte</strong>
-	</h2>
 
 	<Counter />
 </section>
@@ -39,21 +44,5 @@
 
 	h1 {
 		width: 100%;
-	}
-
-	.welcome {
-		display: block;
-		position: relative;
-		width: 100%;
-		height: 0;
-		padding: 0 0 calc(100% * 495 / 2048) 0;
-	}
-
-	.welcome img {
-		position: absolute;
-		width: 100%;
-		height: 100%;
-		top: 0;
-		display: block;
 	}
 </style>
