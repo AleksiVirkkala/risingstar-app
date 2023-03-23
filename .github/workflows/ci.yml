@@ -26,6 +26,12 @@ jobs:
       - name: Install Playwright browsers
         run: pnpx playwright install
 
+      - name: Setup Prisma
+        run: pnpm db:generate && pnpm db:push
+
+      - name: Build
+        run: pnpm build
+
       - name: Run tests
         run: pnpm test
 

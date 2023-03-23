@@ -1,6 +1,6 @@
 {
 	"name": "risingstar-app",
-	"version": "0.0.1",
+	"version": "1.0.0",
 	"scripts": {
 		"dev": "vite dev",
 		"build": "vite build",
@@ -10,13 +10,14 @@
 		"check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch",
 		"test:unit": "vitest",
 		"lint": "prettier --plugin-search-dir . --check . && eslint .",
-		"format": "prettier --plugin-search-dir . --write ."
+		"format": "prettier --plugin-search-dir . --write .",
+		"db:generate": "prisma generate",
+		"db:push": "prisma db push --skip-generate"
 	},
 	"devDependencies": {
 		"@fontsource/fira-mono": "^4.5.10",
 		"@neoconfetti/svelte": "^1.0.0",
-		"@playwright/test": "^1.28.1",
-		"@prisma/client": "^4.11.0",
+		"@playwright/test": "latest",
 		"@sveltejs/adapter-auto": "^2.0.0",
 		"@sveltejs/adapter-node": "^1.2.3",
 		"@sveltejs/kit": "^1.5.0",
@@ -39,9 +40,11 @@
 	},
 	"type": "module",
 	"dependencies": {
+		"@prisma/client": "^4.11.0",
 		"chart.js": "^4.2.1",
 		"chartjs-adapter-date-fns": "^3.0.0",
 		"date-fns": "^2.29.3",
+		"risingstar-app": "link:",
 		"svelte-chartjs": "^3.1.2"
 	}
 }
