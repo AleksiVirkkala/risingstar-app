@@ -62,6 +62,14 @@
 								];
 							}
 						}
+					},
+					title: {
+						text: 'Visit history',
+						font: {
+							size: 20,
+							weight: 'lighter'
+						},
+						display: true
 					}
 				}
 			}

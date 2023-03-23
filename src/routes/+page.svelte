@@ -9,12 +9,12 @@
 
 <svelte:head>
 	<title>RisingStar App</title>
-	<meta name="description" content="Svelte demo app" />
+	<meta name="description" content="Rising star reminder" />
 </svelte:head>
 
 <section>
-	<h1>RisingStar app</h1>
-
+	<h1>Drink water!</h1>
+	
 	{#await promise}
 		<p>Loading visit logs...</p>
 	{:then visitlogs}
