@@ -1,7 +1,6 @@
 <script>
-	import Counter from './Counter.svelte';
+	import VisitorChart from './VisitorChart.svelte';
 
-	
 	const promise = (async () => {
 		const response = await fetch('/api/visitlog');
 		return await response.json();
@@ -13,24 +12,14 @@
 	<meta name="description" content="Svelte demo app" />
 </svelte:head>
 
-{#await promise}
-<p>
-	Loading visit logs...
-</p>
-{:then visitlogs}
-{#each visitlogs as log }
-<div>
-	{log}
-</div> 
-{/each}
-{/await}
-
 <section>
-	<h1>
-		Welcome to your new<br />RisingStar app !!!
-	</h1>
+	<h1>RisingStar app</h1>
 
-	<Counter />
+	{#await promise}
+		<p>Loading visit logs...</p>
+	{:then visitlogs}
+		<VisitorChart logs={visitlogs} />
+	{/await}
 </section>
 
 <style>
