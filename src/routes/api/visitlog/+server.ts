@@ -1,4 +1,4 @@
-import { PrismaClient, type VisitLog } from '@prisma/client';
+import { PrismaClient } from '@prisma/client';
 import { json } from '@sveltejs/kit';
 import type { RequestHandler } from './$types';
 import browserDetect from 'browser-detect';
@@ -36,7 +36,7 @@ const addVisitLog = async (browserInfo: BrowserDetectInfo = {}) => {
 	return json(logs);
 };
 
-const getBrowserInfo = (req) => {
+const getBrowserInfo = (req: Request): BrowserDetectInfo => {
 	const browserInfo = browserDetect(req.headers.get('user-agent') || undefined);
 	return browserInfo;
 };
